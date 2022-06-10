@@ -1128,7 +1128,7 @@ static int iplink_modify(int cmd, unsigned int flags, int argc, char **argv)
 	return 0;
 }
 
-int iplink_get(char *name, __u32 filt_mask)
+int iplink_get(const char *name, __u32 filt_mask)
 {
 	struct iplink_req req = {
 		.n.nlmsg_len = NLMSG_LENGTH(sizeof(struct ifinfomsg)),

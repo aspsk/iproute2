@@ -2074,7 +2074,7 @@ static int ipaddr_list_flush_or_save(int argc, char **argv, int action)
 	struct nlmsg_chain linfo = { NULL, NULL};
 	struct nlmsg_chain _ainfo = { NULL, NULL}, *ainfo = &_ainfo;
 	struct nlmsg_list *l;
-	char *filter_dev = NULL;
+	const char *filter_dev = NULL;
 	int no_link = 0;
 
 	ipaddr_reset_filter(oneline, 0);
@@ -2172,6 +2172,7 @@ static int ipaddr_list_flush_or_save(int argc, char **argv, int action)
 			fprintf(stderr, "Device \"%s\" does not exist.\n", filter_dev);
 			return -1;
 		}
+		filter_dev = ll_index_to_name(filter.ifindex);
 	}
 
 	if (action == IPADD_FLUSH)
